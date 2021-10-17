@@ -9,9 +9,9 @@
 	<center>
 		<br><head><h2><b>State-wise timeline prediction if Covid 3rd wave occurs in India</b></h2></head>
 	
-		<h3>CS460-Project Proposal</h3>
+		<h3>CS460-Midway Update</h3>
 		<h5>Nelson Kshetrimayum<br>Muhammed Jabir T</h5>
-		Dated: 9-9-2021
+		Dated: 17-10-2021
 	</center>
 
 <h3>Objective</h3>
@@ -35,7 +35,7 @@ We will be using data from <i>Covid19india.org</i> which has made the data publi
 <ul>
 	<li>To study/find the correlation (spreading rate) to a neighbouring (nearby) state from a heavy infected (hotspot) state.</li>
 	<li>Find dataset of other factors we can consider (such as population density).</li>
-	<li>Start by implementing multiple linear regression. Use gradient boosting predictor, train using LightGBM.</li>
+	<li>Start by implementing multiple linear regression and ARIMA. Use gradient boosting predictor, train using LightGBM.</li>
 </ul>
 
 <h3>Work division</h3>
@@ -52,13 +52,58 @@ Later:<br>
 	<li>To automate the input of daily data and improve our model.</li>
 </ul>
 
+
+
+
+<hr>
+<h3><center>Midway update</center></h3>
+
+<h5>Following from references:</h5><br>
+
+	<sup><a href = "https://academic.oup.com/inthealth/article/13/5/410/6294059">2</a></sup>
+
+	Using ARIMA to forecast for the following 15 days<br>
+
+	<ul>
+		<li>From the data we have collected from <i>covid19india</i> and following what has been done in one of our reference <i>Short-term forecasting of the Covid-19 outbreak in India</i>, we have been able to generate a prediction for the following 15 days.
+</li>
+		<li>For this we have used ARIMA, specifically <i>auto_arima</i> function from <i>pmdarima</i> library is used to find the best model and the using <i>ARIMA</i> from <i>statsmodels</i> we have trained and tested.
+</li>
+		<li>First we tried on the dataset for India and checked if we can get satisfactory results then proceeded the same procedure with state datas.
+</li>
+	</ul>
+<br>
+	<center>
+	<b>Predicted vs Actual data for last 10 days</b>
+	<figure>
+		<img src="images/MH.png" alt="Maharastra"/>
+		<figcaption> Maharastra </figcaption>
+	</figure>
+	<figure>
+		<img src="images/KL.png" alt="Kerala"/>
+		<figcaption> Kerala </figcaption>
+	</figure>
+	<figure>
+		<img src="images/ODH.png" alt="Odisha"/>
+		<figcaption> Odisha </figcaption>
+	</figure>
+	</center>
+
+	
+
+
+The results we have got till now is close but room for improvement is clearly visible. We will continue to approve on the model by considering factors that have not been taken into account till now. We have yet to find the correlation on the spreading rates of two different states.
+
+<hr>
+
+
 <h3>References</h3>
 
 <ul>
-	<li>[Kaggle] Shreyas P J, 2021, <i>Covid forecasting using DL and statistical models</i>. - <a href="https://www.kaggle.com/shreyaspj/covid-forecasting-using-dl-and-statistical-models">Link</a></li>
-	<li>[International Health] Sherry M, Ashok K. P., Md. Arshad & Ubydul H, 2021, <i>Short-term forecasting of the Covid-19 outbreak in India</i>. - <a href="https://academic.oup.com/inthealth/article/13/5/410/6294059">Link</a></li>
-	<li>[Youtube, Great Learning] Bharani Akella, <i>Predicting COVID-19 With Machine Learning</i>. - <a href="https://www.youtube.com/watch?v=ya17AV-syGM">Link</a></li>
-	<li>[Nature] Yazeed Zoabi, Shira Deri-Rozov  & Noam Shomron, 2021, <i>Machine learning-based prediction of COVID-19 diagnosis based on symptoms</i>. - <a href="https://www.nature.com/articles/s41746-020-00372-6">Link</a></li>
+	<li><sup>1</sup> [Kaggle] Shreyas P J, 2021, <i>Covid forecasting using DL and statistical models</i>. - <a href="https://www.kaggle.com/shreyaspj/covid-forecasting-using-dl-and-statistical-models">Link</a></li>
+	<li><sup>2</sup> [International Health] Sherry M, Ashok K. P., Md. Arshad & Ubydul H, 2021, <i>Short-term forecasting of the Covid-19 outbreak in India</i>. - <a href="https://academic.oup.com/inthealth/article/13/5/410/6294059">Link</a></li>
+	<li><sup>3</sup> [Youtube] Bharani Akella, Great Learning, <i>Predicting COVID-19 With Machine Learning</i>. - <a href="https://www.youtube.com/watch?v=ya17AV-syGM">Link</a></li>
+	<li><sup>4</sup> [Nature] Yazeed Zoabi, Shira Deri-Rozov  & Noam Shomron, 2021, <i>Machine learning-based prediction of COVID-19 diagnosis based on symptoms</i>. - <a href="https://www.nature.com/articles/s41746-020-00372-6">Link</a></li>
 </ul>
 
 </div>
