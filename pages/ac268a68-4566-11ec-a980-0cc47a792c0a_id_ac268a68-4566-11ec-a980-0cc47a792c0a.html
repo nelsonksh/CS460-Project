@@ -1,0 +1,234 @@
+<html>
+<head><meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+span.cls_002{font-family:Arial,serif;font-size:17.3px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_002{font-family:Arial,serif;font-size:17.3px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_003{font-family:Arial,serif;font-size:12.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_003{font-family:Arial,serif;font-size:12.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_004{font-family:Arial,serif;font-size:14.4px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_004{font-family:Arial,serif;font-size:14.4px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_005{font-family:Arial,serif;font-size:10.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_005{font-family:Arial,serif;font-size:10.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_006{font-family:Arial,serif;font-size:5.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_006{font-family:Arial,serif;font-size:5.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_007{font-family:Arial,serif;font-size:9.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_007{font-family:Arial,serif;font-size:9.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_008{font-family:Arial,serif;font-size:7.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_008{font-family:Arial,serif;font-size:7.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+-->
+</style>
+<script type="text/javascript" src="ac268a68-4566-11ec-a980-0cc47a792c0a_id_ac268a68-4566-11ec-a980-0cc47a792c0a_files/wz_jsgraphics.js"></script>
+</head>
+<body>
+<div style="position:absolute;left:50%;margin-left:-306px;top:0px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="ac268a68-4566-11ec-a980-0cc47a792c0a_id_ac268a68-4566-11ec-a980-0cc47a792c0a_files/background1.jpg" width=612 height=792></div>
+<div style="position:absolute;left:146.77px;top:159.39px" class="cls_002"><span class="cls_002">Integrating COVID-19 compartmental models</span></div>
+<div style="position:absolute;left:252.69px;top:181.31px" class="cls_002"><span class="cls_002">and DL models</span></div>
+<div style="position:absolute;left:264.46px;top:215.46px" class="cls_003"><span class="cls_003">jabir and nelson</span></div>
+<div style="position:absolute;left:271.32px;top:238.91px" class="cls_003"><span class="cls_003">October 2021</span></div>
+<div style="position:absolute;left:133.77px;top:277.27px" class="cls_004"><span class="cls_004">1</span></div>
+<div style="position:absolute;left:157.98px;top:277.27px" class="cls_004"><span class="cls_004">The Idea</span></div>
+<div style="position:absolute;left:133.77px;top:303.48px" class="cls_005"><span class="cls_005">Its is well known that the prediction accuracy of neural networks is higher than</span></div>
+<div style="position:absolute;left:133.77px;top:315.43px" class="cls_005"><span class="cls_005">that of traditional prediction methods. This is primarily related to the neural</span></div>
+<div style="position:absolute;left:133.77px;top:327.39px" class="cls_005"><span class="cls_005">network’s features.  Neural networks are good at capturing the properties of</span></div>
+<div style="position:absolute;left:133.77px;top:339.34px" class="cls_005"><span class="cls_005">complicated systems with high non-linearity that are difficult to represent using</span></div>
+<div style="position:absolute;left:133.77px;top:351.30px" class="cls_005"><span class="cls_005">a precise mathematical model, and they are also very adaptable. In-fact COVID-</span></div>
+<div style="position:absolute;left:133.77px;top:363.25px" class="cls_005"><span class="cls_005">19 dynamics within populations is a complex system with random mutation of</span></div>
+<div style="position:absolute;left:133.77px;top:375.21px" class="cls_005"><span class="cls_005">the virus and due to the complexity of social mobility. LSTM layer is a type of</span></div>
+<div style="position:absolute;left:133.77px;top:387.16px" class="cls_005"><span class="cls_005">Recurrent Neural Network (RNN) that utilizes learning from concurrent data.</span></div>
+<div style="position:absolute;left:148.71px;top:399.12px" class="cls_005"><span class="cls_005">Initially, we had this exciting idea of forecasting COVID-19 trends by pre-</span></div>
+<div style="position:absolute;left:133.77px;top:411.07px" class="cls_005"><span class="cls_005">dicting parameters of deterministic compartment based model for COVID-19</span></div>
+<div style="position:absolute;left:133.77px;top:423.03px" class="cls_005"><span class="cls_005">in each time step from trends in previous time steps using some deep learning</span></div>
+<div style="position:absolute;left:133.77px;top:434.98px" class="cls_005"><span class="cls_005">models. And then we the solve the compartmental model ODE’s to predict the</span></div>
+<div style="position:absolute;left:133.77px;top:446.94px" class="cls_005"><span class="cls_005">trends in the particular time step, and so on with the succeeding time steps.</span></div>
+<div style="position:absolute;left:133.77px;top:458.89px" class="cls_005"><span class="cls_005">But unfortunately, from a recent google search, we found that, people had al-</span></div>
+<div style="position:absolute;left:133.77px;top:470.85px" class="cls_005"><span class="cls_005">ready thought of it, and they had already done fantastic works based on this</span></div>
+<div style="position:absolute;left:133.77px;top:482.80px" class="cls_005"><span class="cls_005">idea, especially using LSTM, as in [1, 4]. And they have got very good results.</span></div>
+<div style="position:absolute;left:133.77px;top:494.76px" class="cls_005"><span class="cls_005">Therefore, we will try to give a short combined review of [1, 2, 3, 4] in this</span></div>
+<div style="position:absolute;left:133.77px;top:506.72px" class="cls_005"><span class="cls_005">report and propose to use the idea in our project.</span></div>
+<div style="position:absolute;left:133.77px;top:534.96px" class="cls_004"><span class="cls_004">2</span></div>
+<div style="position:absolute;left:157.98px;top:534.96px" class="cls_004"><span class="cls_004">Compartmental  modeling  for  infectious  dis-</span></div>
+<div style="position:absolute;left:157.98px;top:552.89px" class="cls_004"><span class="cls_004">eases</span></div>
+<div style="position:absolute;left:133.77px;top:579.10px" class="cls_005"><span class="cls_005">Regardless of the nature of transmissibility of human infectious diseases, the</span></div>
+<div style="position:absolute;left:133.77px;top:591.05px" class="cls_005"><span class="cls_005">individual life-course of infection can be conveniently represented by a sequence</span></div>
+<div style="position:absolute;left:133.77px;top:603.01px" class="cls_005"><span class="cls_005">of transitions between a few epidemiological classes, or compartments, triggered</span></div>
+<div style="position:absolute;left:133.77px;top:614.96px" class="cls_005"><span class="cls_005">by specific processes and parameters. For new pathogens, such as a pandemic</span></div>
+<div style="position:absolute;left:133.77px;top:626.92px" class="cls_005"><span class="cls_005">flu virus, all individuals are initially susceptible to the infection (class S), which</span></div>
+<div style="position:absolute;left:133.77px;top:638.87px" class="cls_005"><span class="cls_005">they acquire at a rate λ entering the exposed class (E), a latency or incubation</span></div>
+<div style="position:absolute;left:133.77px;top:650.83px" class="cls_005"><span class="cls_005">phase where individuals are infected, i.e. the virus is replicating in their body,</span></div>
+<div style="position:absolute;left:133.77px;top:662.78px" class="cls_005"><span class="cls_005">but not yet infective, which they become at some rate α. Individuals belonging</span></div>
+<div style="position:absolute;left:303.13px;top:692.67px" class="cls_005"><span class="cls_005">1</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:802px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="ac268a68-4566-11ec-a980-0cc47a792c0a_id_ac268a68-4566-11ec-a980-0cc47a792c0a_files/background2.jpg" width=612 height=792></div>
+<div style="position:absolute;left:133.77px;top:124.80px" class="cls_005"><span class="cls_005">to the infective class (I) will usually recover, at a rate γ , acquiring immunity</span></div>
+<div style="position:absolute;left:133.77px;top:136.76px" class="cls_005"><span class="cls_005">and entering the removed class (R). Such modelling can be illustrated as shown</span></div>
+<div style="position:absolute;left:133.77px;top:148.71px" class="cls_005"><span class="cls_005">in Fig. 1</span></div>
+<div style="position:absolute;left:304.86px;top:188.60px" class="cls_006"><span class="cls_006">δ</span></div>
+<div style="position:absolute;left:232.45px;top:209.30px" class="cls_006"><span class="cls_006">birth</span></div>
+<div style="position:absolute;left:269.03px;top:208.52px" class="cls_006"><span class="cls_006">λ(t)</span></div>
+<div style="position:absolute;left:308.45px;top:208.12px" class="cls_006"><span class="cls_006">α</span></div>
+<div style="position:absolute;left:344.26px;top:207.33px" class="cls_006"><span class="cls_006">γ</span></div>
+<div style="position:absolute;left:251.73px;top:210.40px" class="cls_007"><span class="cls_007">S</span></div>
+<div style="position:absolute;left:289.14px;top:209.75px" class="cls_007"><span class="cls_007">E</span></div>
+<div style="position:absolute;left:326.57px;top:209.75px" class="cls_007"><span class="cls_007">I</span></div>
+<div style="position:absolute;left:361.39px;top:209.61px" class="cls_007"><span class="cls_007">R</span></div>
+<div style="position:absolute;left:257.10px;top:226.83px" class="cls_006"><span class="cls_006">μ</span></div>
+<div style="position:absolute;left:294.53px;top:226.35px" class="cls_006"><span class="cls_006">μ</span></div>
+<div style="position:absolute;left:327.83px;top:226.96px" class="cls_006"><span class="cls_006">μ</span></div>
+<div style="position:absolute;left:366.55px;top:226.35px" class="cls_006"><span class="cls_006">μ</span></div>
+<div style="position:absolute;left:304.86px;top:251.51px" class="cls_006"><span class="cls_006">δ</span></div>
+<div style="position:absolute;left:247.56px;top:273.80px" class="cls_006"><span class="cls_006">birth</span></div>
+<div style="position:absolute;left:286.56px;top:272.20px" class="cls_006"><span class="cls_006">λ(t)</span></div>
+<div style="position:absolute;left:326.76px;top:270.99px" class="cls_006"><span class="cls_006">γ</span></div>
+<div style="position:absolute;left:269.26px;top:274.08px" class="cls_007"><span class="cls_007">S</span></div>
+<div style="position:absolute;left:309.04px;top:273.44px" class="cls_007"><span class="cls_007">I</span></div>
+<div style="position:absolute;left:343.87px;top:273.29px" class="cls_007"><span class="cls_007">R</span></div>
+<div style="position:absolute;left:274.62px;top:290.51px" class="cls_006"><span class="cls_006">μ</span></div>
+<div style="position:absolute;left:310.34px;top:290.65px" class="cls_006"><span class="cls_006">μ</span></div>
+<div style="position:absolute;left:349.06px;top:290.00px" class="cls_006"><span class="cls_006">μ</span></div>
+<div style="position:absolute;left:253.64px;top:330.30px" class="cls_006"><span class="cls_006">birth</span></div>
+<div style="position:absolute;left:295.31px;top:330.30px" class="cls_006"><span class="cls_006">λ(t)</span></div>
+<div style="position:absolute;left:334.74px;top:329.12px" class="cls_006"><span class="cls_006">γ</span></div>
+<div style="position:absolute;left:278.02px;top:332.18px" class="cls_007"><span class="cls_007">S</span></div>
+<div style="position:absolute;left:318.62px;top:331.54px" class="cls_007"><span class="cls_007">I</span></div>
+<div style="position:absolute;left:283.38px;top:348.61px" class="cls_006"><span class="cls_006">μ</span></div>
+<div style="position:absolute;left:320.70px;top:348.74px" class="cls_006"><span class="cls_006">μ</span></div>
+<div style="position:absolute;left:133.77px;top:406.92px" class="cls_005"><span class="cls_005">Figure 1: The compartmental representation SEIRS, SIRS and SIS models for</span></div>
+<div style="position:absolute;left:133.77px;top:418.88px" class="cls_005"><span class="cls_005">some important classes of infections of individual course. The circles are identi-</span></div>
+<div style="position:absolute;left:133.77px;top:430.83px" class="cls_005"><span class="cls_005">fied epidemiological classes and arrows are marked as the process of class change,</span></div>
+<div style="position:absolute;left:133.77px;top:442.79px" class="cls_005"><span class="cls_005">entry and exit due to demographics.</span></div>
+<div style="position:absolute;left:148.71px;top:466.70px" class="cls_005"><span class="cls_005">Based on this illustration of the individual course, we can model the spread of</span></div>
+<div style="position:absolute;left:133.77px;top:478.65px" class="cls_005"><span class="cls_005">an infectious disease by describing the dynamics of infections at the population</span></div>
+<div style="position:absolute;left:133.77px;top:490.61px" class="cls_005"><span class="cls_005">level, by assigning a dynamic variable to each compartment denoting the number</span></div>
+<div style="position:absolute;left:133.77px;top:502.56px" class="cls_005"><span class="cls_005">(or the proportion) of individuals in that class at each instant of time. So, lets</span></div>
+<div style="position:absolute;left:133.77px;top:514.52px" class="cls_005"><span class="cls_005">denote the total population size and N, and X (S = X /N), H (E = H /N),</span></div>
+<div style="position:absolute;left:133.77px;top:526.47px" class="cls_005"><span class="cls_005">Y (I = Y /N), Z (R = Z /N) as the numbers (proportions) of individuals who</span></div>
+<div style="position:absolute;left:133.77px;top:538.43px" class="cls_005"><span class="cls_005">respectively occupy the various classes at time t, with N = X + H + Y + Z ,</span></div>
+<div style="position:absolute;left:133.77px;top:550.38px" class="cls_005"><span class="cls_005">and S + E + I + R = 1.</span></div>
+<div style="position:absolute;left:148.71px;top:562.34px" class="cls_005"><span class="cls_005">The population as a whole can be related to concept of homogeneous (or ran-</span></div>
+<div style="position:absolute;left:133.77px;top:574.29px" class="cls_005"><span class="cls_005">dom) mixing, which in this context, refers to an infection spreading by direct</span></div>
+<div style="position:absolute;left:133.77px;top:586.25px" class="cls_005"><span class="cls_005">person-to-person contacts in a closed homogenous social medium, the popula-</span></div>
+<div style="position:absolute;left:133.77px;top:598.20px" class="cls_005"><span class="cls_005">tion, whose agents have an approximately identical social activity.  So, if C is</span></div>
+<div style="position:absolute;left:133.77px;top:610.16px" class="cls_005"><span class="cls_005">the number of contacts made by a susceptible individual per unit time, then</span></div>
+<div style="position:absolute;left:133.77px;top:622.11px" class="cls_005"><span class="cls_005">the probability that the contact made is with an infected individual is obviously</span></div>
+<div style="position:absolute;left:133.77px;top:634.07px" class="cls_005"><span class="cls_005">I = Y/N. And if β</span><span class="cls_008"><sub>I</sub></span><span class="cls_005"> is the probability that the disease will be transmitted to</span></div>
+<div style="position:absolute;left:133.77px;top:646.03px" class="cls_005"><span class="cls_005">the susceptible individual from the infected individual, then the rate λ at which</span></div>
+<div style="position:absolute;left:133.77px;top:657.98px" class="cls_005"><span class="cls_005">individuals leave from the suceptible class S in Fig.</span></div>
+<div style="position:absolute;left:369.21px;top:657.98px" class="cls_005"><span class="cls_005">1 can be written as λ =</span></div>
+<div style="position:absolute;left:303.13px;top:692.67px" class="cls_005"><span class="cls_005">2</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:1604px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="ac268a68-4566-11ec-a980-0cc47a792c0a_id_ac268a68-4566-11ec-a980-0cc47a792c0a_files/background3.jpg" width=612 height=792></div>
+<div style="position:absolute;left:133.77px;top:124.80px" class="cls_005"><span class="cls_005">β</span><span class="cls_008"><sub>I</sub></span><span class="cls_005">CI. Setting β = β</span><span class="cls_008"><sub>I</sub></span><span class="cls_005">C, λ = βI.</span></div>
+<div style="position:absolute;left:133.77px;top:136.76px" class="cls_005"><span class="cls_005">Now, assuming that a population N has an unique and globally stable equilib-</span></div>
+<div style="position:absolute;left:133.77px;top:148.71px" class="cls_005"><span class="cls_005">rium N</span><span class="cls_008"><sub>e</sub></span><span class="cls_005"> such that birth rate b(N</span><span class="cls_008"><sub>e</sub></span><span class="cls_005">) and mortality m(N</span><span class="cls_008"><sub>e</sub></span><span class="cls_005">) rate of the population</span></div>
+<div style="position:absolute;left:133.77px;top:160.67px" class="cls_005"><span class="cls_005">are the same, i.e., b(N</span><span class="cls_008"><sub>e</sub></span><span class="cls_005">) = m(N</span><span class="cls_008"><sub>e</sub></span><span class="cls_005">) = α, and that the population is at this steady</span></div>
+<div style="position:absolute;left:133.77px;top:172.62px" class="cls_005"><span class="cls_005">state, then we can translate the SEIRS diagram in Fig.</span></div>
+<div style="position:absolute;left:390.36px;top:172.62px" class="cls_005"><span class="cls_005">1 into the following</span></div>
+<div style="position:absolute;left:133.77px;top:184.58px" class="cls_005"><span class="cls_005">mean-field system of ODEs,</span></div>
+<div style="position:absolute;left:248.04px;top:205.37px" class="cls_005"><span class="cls_005">S</span><span class="cls_008"><sup>′</sup></span><span class="cls_005"> = µ(1 − S) + δR − βSI</span></div>
+<div style="position:absolute;left:464.75px;top:206.50px" class="cls_005"><span class="cls_005">(1)</span></div>
+<div style="position:absolute;left:258.40px;top:227.29px" class="cls_005"><span class="cls_005">E</span><span class="cls_008"><sup>′</sup></span><span class="cls_005"> = βSI − (α + µ)E</span></div>
+<div style="position:absolute;left:464.75px;top:228.41px" class="cls_005"><span class="cls_005">(2)</span></div>
+<div style="position:absolute;left:263.35px;top:245.22px" class="cls_005"><span class="cls_005">I</span><span class="cls_008"><sup>′</sup></span><span class="cls_005"> = αE − (γ + µ)I</span></div>
+<div style="position:absolute;left:464.75px;top:246.35px" class="cls_005"><span class="cls_005">(3)</span></div>
+<div style="position:absolute;left:133.77px;top:264.28px" class="cls_005"><span class="cls_005">complemented by R = 1 - S - E - I. Thus, the Model of Eqs. 1-3 is the so-called</span></div>
+<div style="position:absolute;left:133.77px;top:276.23px" class="cls_005"><span class="cls_005">deterministic SEIRS model.</span></div>
+<div style="position:absolute;left:133.77px;top:302.13px" class="cls_003"><span class="cls_003">2.1</span></div>
+<div style="position:absolute;left:164.40px;top:302.13px" class="cls_003"><span class="cls_003">SEIR modifications for COVID1-19</span></div>
+<div style="position:absolute;left:133.77px;top:322.51px" class="cls_005"><span class="cls_005">People had considered different modifications of SEIR model, such as adding</span></div>
+<div style="position:absolute;left:133.77px;top:334.47px" class="cls_005"><span class="cls_005">extra compartments as done in [4], or combining multiple SEIR models with</span></div>
+<div style="position:absolute;left:133.77px;top:346.42px" class="cls_005"><span class="cls_005">different parameters in-order to model spread between networks (eg. cites, house</span></div>
+<div style="position:absolute;left:133.77px;top:358.38px" class="cls_005"><span class="cls_005">holds, workplaces etc) as used in [1], specifically for modeling COVID-19 spread</span></div>
+<div style="position:absolute;left:133.77px;top:370.33px" class="cls_005"><span class="cls_005">with better accuracy.</span></div>
+<div style="position:absolute;left:133.77px;top:398.89px" class="cls_004"><span class="cls_004">3</span></div>
+<div style="position:absolute;left:157.98px;top:398.89px" class="cls_004"><span class="cls_004">Methodologies of incorporating DL models to</span></div>
+<div style="position:absolute;left:157.98px;top:416.83px" class="cls_004"><span class="cls_004">compartmental models</span></div>
+<div style="position:absolute;left:133.77px;top:443.03px" class="cls_005"><span class="cls_005">Ref.[3] where the first to propose a deep learning based solution for Covid-</span></div>
+<div style="position:absolute;left:133.77px;top:454.99px" class="cls_005"><span class="cls_005">19 spread prediction solely based on the known reported cases of Covid-19.</span></div>
+<div style="position:absolute;left:133.77px;top:466.94px" class="cls_005"><span class="cls_005">They designed a deep neural network, which consist of LSTM (Long Short</span></div>
+<div style="position:absolute;left:133.77px;top:478.90px" class="cls_005"><span class="cls_005">Term Memory) layer, dropout layer, and fully connected layers, to analyze the</span></div>
+<div style="position:absolute;left:133.77px;top:490.85px" class="cls_005"><span class="cls_005">reported Covid-19 cases and predict the possible future scenarios for the spread</span></div>
+<div style="position:absolute;left:133.77px;top:502.81px" class="cls_005"><span class="cls_005">in China, Europe, Middle East and worldwide.  Their approach predicts the</span></div>
+<div style="position:absolute;left:133.77px;top:514.76px" class="cls_005"><span class="cls_005">cumulative number of cases, cumulative number of deaths and daily new cases</span></div>
+<div style="position:absolute;left:133.77px;top:526.72px" class="cls_005"><span class="cls_005">worldwide. All their predictions are done for the next 10 days given the actual</span></div>
+<div style="position:absolute;left:133.77px;top:538.67px" class="cls_005"><span class="cls_005">time series data of Covid-19. They evaluate their approach on the last 3 days</span></div>
+<div style="position:absolute;left:133.77px;top:550.63px" class="cls_005"><span class="cls_005">of actual data using Root Mean Square Error (RMSE) metric.  They present</span></div>
+<div style="position:absolute;left:133.77px;top:562.58px" class="cls_005"><span class="cls_005">results from the networks that give the minimum RMSE values.  Thus, the</span></div>
+<div style="position:absolute;left:133.77px;top:574.54px" class="cls_005"><span class="cls_005">network with minimum RMSE is used to predict the future scenarios. As new</span></div>
+<div style="position:absolute;left:133.77px;top:586.49px" class="cls_005"><span class="cls_005">data arise daily, the network can be re-train in order to adjust the real-time</span></div>
+<div style="position:absolute;left:133.77px;top:598.45px" class="cls_005"><span class="cls_005">predictions. Further, they present the deep neural network used for forecasting</span></div>
+<div style="position:absolute;left:133.77px;top:610.40px" class="cls_005"><span class="cls_005">and evaluate their approach with RMSE, and finally illustrate and discuss the</span></div>
+<div style="position:absolute;left:133.77px;top:622.36px" class="cls_005"><span class="cls_005">possible scenarios for Covid-19 spread regionally and worldwide.</span></div>
+<div style="position:absolute;left:424.64px;top:622.36px" class="cls_005"><span class="cls_005">[2] also uses</span></div>
+<div style="position:absolute;left:133.77px;top:634.32px" class="cls_005"><span class="cls_005">the similar and improved approach.</span></div>
+<div style="position:absolute;left:148.71px;top:646.27px" class="cls_005"><span class="cls_005">Now coming to the idea we propose, [4] considers SIRJD model for COVID-</span></div>
+<div style="position:absolute;left:133.77px;top:658.23px" class="cls_005"><span class="cls_005">19</span></div>
+<div style="position:absolute;left:146.32px;top:658.23px" class="cls_005"><span class="cls_005">(a modified version of SIR model). They construct the in-sample SIRJD time</span></div>
+<div style="position:absolute;left:303.13px;top:692.67px" class="cls_005"><span class="cls_005">3</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:2406px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="ac268a68-4566-11ec-a980-0cc47a792c0a_id_ac268a68-4566-11ec-a980-0cc47a792c0a_files/background4.jpg" width=612 height=792></div>
+<div style="position:absolute;left:133.77px;top:124.80px" class="cls_005"><span class="cls_005">series to come up with an in-sample time series for β and γ (the most critical</span></div>
+<div style="position:absolute;left:133.77px;top:136.76px" class="cls_005"><span class="cls_005">daily transmission parameters).  Further they constructed a confirmed/dead-</span></div>
+<div style="position:absolute;left:133.77px;top:148.71px" class="cls_005"><span class="cls_005">case time series from the starting date of their data set. Then they apply two</span></div>
+<div style="position:absolute;left:133.77px;top:160.67px" class="cls_005"><span class="cls_005">deep learning algorithms; the standard deep neural networks (DNN) and the</span></div>
+<div style="position:absolute;left:133.77px;top:172.62px" class="cls_005"><span class="cls_005">LSTM to fit the confirmed/dead in-sample time series and predict the out-of-</span></div>
+<div style="position:absolute;left:133.77px;top:184.58px" class="cls_005"><span class="cls_005">sample time series, that is further development of confirmed/dead cases for 35</span></div>
+<div style="position:absolute;left:133.77px;top:196.53px" class="cls_005"><span class="cls_005">and 42 days in their work.  This confirmed/dead in-sample time series is then</span></div>
+<div style="position:absolute;left:133.77px;top:208.49px" class="cls_005"><span class="cls_005">used as training data and the in-sample β and γ time series from Step 2 as</span></div>
+<div style="position:absolute;left:133.77px;top:220.44px" class="cls_005"><span class="cls_005">training label. And then DNN and LSTM is applied again to predict β and γ</span></div>
+<div style="position:absolute;left:133.77px;top:232.40px" class="cls_005"><span class="cls_005">for 35 and 42 days (out-of-sample time series). And finally, the predicted (out-</span></div>
+<div style="position:absolute;left:133.77px;top:244.35px" class="cls_005"><span class="cls_005">of-sample) transmission parameters (β and γ) from the starting date is used to</span></div>
+<div style="position:absolute;left:133.77px;top:256.31px" class="cls_005"><span class="cls_005">simulate 35- and 42-day progressions (out-of-sample time series) of the SIRJD</span></div>
+<div style="position:absolute;left:133.77px;top:268.26px" class="cls_005"><span class="cls_005">model (particularly the SIR portion) in a recursive manner, starting with the</span></div>
+<div style="position:absolute;left:133.77px;top:280.22px" class="cls_005"><span class="cls_005">data point of the last time step from the in-sample SIRJD time series.</span></div>
+<div style="position:absolute;left:148.71px;top:292.17px" class="cls_005"><span class="cls_005">Fig.(2) shows the flow chart that [4] used to demonstrate their methodology.</span></div>
+<div style="position:absolute;left:241.65px;top:658.89px" class="cls_005"><span class="cls_005">Figure 2: Flow chart from [4]</span></div>
+<div style="position:absolute;left:303.13px;top:692.67px" class="cls_005"><span class="cls_005">4</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:3208px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="ac268a68-4566-11ec-a980-0cc47a792c0a_id_ac268a68-4566-11ec-a980-0cc47a792c0a_files/background5.jpg" width=612 height=792></div>
+<div style="position:absolute;left:148.71px;top:124.80px" class="cls_005"><span class="cls_005">Ref.[1] is also has the same approach as [4].  But they use a better epi-</span></div>
+<div style="position:absolute;left:133.77px;top:136.76px" class="cls_005"><span class="cls_005">demiological model (SEIR) for heterogeneous population, which is called the</span></div>
+<div style="position:absolute;left:133.77px;top:148.71px" class="cls_005"><span class="cls_005">meta-population model and they incorporate it with DNN and LSTM. The</span></div>
+<div style="position:absolute;left:133.77px;top:160.67px" class="cls_005"><span class="cls_005">framework of methodology in [1] is illustrated in Fig.(3)</span></div>
+<div style="position:absolute;left:240.95px;top:359.04px" class="cls_005"><span class="cls_005">Figure 3: Framework from [1]</span></div>
+<div style="position:absolute;left:133.77px;top:399.55px" class="cls_004"><span class="cls_004">4</span></div>
+<div style="position:absolute;left:157.98px;top:399.55px" class="cls_004"><span class="cls_004">The scope of the idea to our project</span></div>
+<div style="position:absolute;left:133.77px;top:425.76px" class="cls_005"><span class="cls_005">We had tried many regression based model, but we failed to get more consis-</span></div>
+<div style="position:absolute;left:133.77px;top:437.71px" class="cls_005"><span class="cls_005">tent and more realistic result.  We are excited to explore more on this idea to</span></div>
+<div style="position:absolute;left:133.77px;top:449.67px" class="cls_005"><span class="cls_005">incorporate and test it in our project. But its quite challenging. Interestingly,</span></div>
+<div style="position:absolute;left:133.77px;top:461.62px" class="cls_005"><span class="cls_005">the meta-population model incorporated with DNN and LSTM in [1] seems to</span></div>
+<div style="position:absolute;left:133.77px;top:473.58px" class="cls_005"><span class="cls_005">be a very consistent approach with the objective of our project for state wise</span></div>
+<div style="position:absolute;left:133.77px;top:485.53px" class="cls_005"><span class="cls_005">prediction.</span></div>
+<div style="position:absolute;left:133.77px;top:514.10px" class="cls_004"><span class="cls_004">References</span></div>
+<div style="position:absolute;left:133.77px;top:540.30px" class="cls_005"><span class="cls_005">[1] Hybrid Deep Learning-Based Epidemic Prediction Framework of COVID-19:</span></div>
+<div style="position:absolute;left:149.27px;top:552.26px" class="cls_005"><span class="cls_005">South Korea Case, Firda Rahmadani and Hyunsoo Lee.</span></div>
+<div style="position:absolute;left:133.77px;top:572.18px" class="cls_005"><span class="cls_005">[2] Peipei Wang, Xinqi Zheng, Gang Ai, Dongya Liu, Bangren Zhu. Time se-</span></div>
+<div style="position:absolute;left:149.27px;top:584.14px" class="cls_005"><span class="cls_005">ries prediction for the epidemic trends of COVID-19 using the improved</span></div>
+<div style="position:absolute;left:149.27px;top:596.09px" class="cls_005"><span class="cls_005">LSTM  deep  learning  method:  Case  studies  in  Russia,  Peru  and  Iran,</span></div>
+<div style="position:absolute;left:149.27px;top:608.05px" class="cls_005"><span class="cls_005">Chaos, Solitons & Fractals, Volume 140, 2020, 110214, ISSN 0960-0779,</span></div>
+<div style="position:absolute;left:149.27px;top:620.00px" class="cls_005"><span class="cls_005"> </span><A HREF="https://doi.org/10.1016/j.chaos.2020.110214./">https://doi.org/10.1016/j.chaos.2020.110214.</A> </div>
+<div style="position:absolute;left:133.77px;top:639.93px" class="cls_005"><span class="cls_005">[3] Worldwide and Regional Forecasting of Coronavirus (Covid-19) Spread using</span></div>
+<div style="position:absolute;left:149.27px;top:651.88px" class="cls_005"><span class="cls_005">a Deep Learning Model. Cem Direkoglu and Melike Sah.</span></div>
+<div style="position:absolute;left:303.13px;top:692.67px" class="cls_005"><span class="cls_005">5</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:4010px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="ac268a68-4566-11ec-a980-0cc47a792c0a_id_ac268a68-4566-11ec-a980-0cc47a792c0a_files/background6.jpg" width=612 height=792></div>
+<div style="position:absolute;left:133.77px;top:124.80px" class="cls_005"><span class="cls_005">[4] Dynamics and Development of the COVID-19 Epidemic in the United States:</span></div>
+<div style="position:absolute;left:149.27px;top:136.76px" class="cls_005"><span class="cls_005">A Compartmental Model Enhanced With Deep Learning Techniques, Qi</span></div>
+<div style="position:absolute;left:149.27px;top:148.71px" class="cls_005"><span class="cls_005">Deng.</span></div>
+<div style="position:absolute;left:303.13px;top:692.67px" class="cls_005"><span class="cls_005">6</span></div>
+</div>
+
+</body>
+</html>

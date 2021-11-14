@@ -7,11 +7,11 @@
 <body>
 	<div class="container">
 	<center>
-		<br><head><h2><b>State-wise timeline prediction if Covid 3rd wave occurs in India</b></h2></head>
+		<br><head><h2><b>State level covid cases forecasting and finding out a correlation of a hotspot state and a relatively smaller state</b></h2></head>
 	
-		<h3>CS460-Midway Update</h3>
+		<h3>A project report as part of course CS460</h3>
 		<h5>Nelson Kshetrimayum<br>Muhammed Jabir T</h5>
-		Dated: 17-10-2021
+		Dated: 14-11-2021
 	</center>
 
 <h3>Objective</h3>
@@ -23,79 +23,44 @@
 
 <h3>Dataset</h3>
 
-We will be using data from <i>Covid19india.org</i> which has made the data publicly available. <a href="https://data.covid19india.org/">Site link</a><br>
+We have used data from <i>Covid19india.org</i> which has made the data publicly available. <a href="https://data.covid19india.org/">Site link</a><br>
 <ul>
 	<li>Testing data for each state</li>
 	<li>Cases for each state</li>
 	<li>Vaccination data</li>
 </ul>
 
-<h3>Approach Plan</h3>
 
-<ul>
-	<li>To study/find the correlation (spreading rate) to a neighbouring (nearby) state from a heavy infected (hotspot) state.</li>
-	<li>Find dataset of other factors we can consider (such as population density).</li>
-	<li>Start by implementing multiple linear regression and ARIMA. Use gradient boosting predictor, train using LightGBM.</li>
-</ul>
-
-<h3>Work division</h3>
-
-Midway plan:<br>
-<ul>
-	<li>Sorting/rearranging of the data to fit our use, making sure of proper labeling and merging the datasets that are going to be used. - Nelson</li>
-	<li>Finding out the correlation between the datas (Vaccination efficiency, infectiousness of virus variant, etc) - Jabir</li>
-	<li>Finding out the optimal method to implement on the problem and making our model. - Both</li>
-</ul>
-
-Later:<br>
-<ul>
-	<li>To automate the input of daily data and improve our model.</li>
-</ul>
-
-
-
-
-<hr>
-<h3><center>Midway update</center></h3>
-
-<h5>Paper analysis:</h5><br>
+<h3>Challenges</h3>
 <ul>
 	<li>
-		<b><a href="https://ieeexplore.ieee.org/document/9298045">Forecasting of COVID-19 in India Using ARIMA Model</a></b><br>
-		- Narayana Darapaneni, Deepak Reddy, Anwesh Reddy Paduri, Pooja Acharya, H S Nithin<br>
-		<ul>
-			<li>Used python package 'pmdarima', auto_arima function to achieve the relevant values for p, d and q.</li>
-			<li>Goodness of fit - R-squared value of 0.994 suggests this be a good model.</li>
-			<li>Forecast of cases of the following 10 days.</li>
-			<li>Results indicate that the predictions are within the range of 95% confidence interval.</li>
-		</ul>
-	</li>
+<h4>Covid-19 forecasting is not a univariate problem</h4>
 
-	<li>
-		<b><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7744840/">Analysis and prediction of COVID‐19 trajectory: A machine learning approach</a></b><br>
-		- Ritanjali Majhi, Rahul Thangeda, Renu Prasad Sugasi and Niraj Kumar<br>
-		<ul>
-			<li>Build predictive models that can predict the number of positive cases. Regression‐based (Nonlinear Regression), Decision tree‐based, and Random forest‐based are tested and compared for effectiveness.
-			</li>
-			<li>The data were split into 80% training for developing the model and 20% testing to validate the effectiveness of the models.</li>
-			<li>Mean Absolute Percentage Error
-				<ul>
-					<li>Nonlinear regression - 0.24%</li>
-					<li>Decision tree - 0.18%</li>
-					<li>Random forest - 0.02%</li>
-				</ul></li>
-		</ul>
-	</li>
 
+Yes, present active cases are dependent on past cases. But,
+<ul>
+	<li>Increase or decrease in recovered cases or death due to covid is obviously related to newly infected cases and vice versa.<li>
+	<li>A particular state’s infected cases are correlated to other states depending upon location, migration and travel status etc.</li>
+	<li>Climate has to do with viruses properties such transmissibility. Therefore Covid trends are crucially affected by  exogenous variables like temperature and humidity!</li>
+	<li>And importantly, data of number of tests conducted should be taken into account.</li>
+</ul>
+</li>
 </ul>
 
-<br>
+<h3>Approach</h3>
 
-<h5>Following from references:</h5><br>
+<ul>
+	<li>Using ARIMA, specifically auto_arima function from pmdarima library and following what has been done in one of our reference Short-term forecasting of the Covid-19 outbreak in India, we have been able to generate a prediction for the following 15 days.</li>
+	<li>We also used VARMAX to forecast a covid cases timeline for different states.</li>
+	<li>Similarly using random forest regression from sklearn library an attempt was made to forecast active cases timeline for states.</li>
+	<li>We implemented a Random forest model to find the correlation to a another state from a heavy infected (hotspot) state.</li>
+	<li>We did a theoretical study of compartmental models of infectious disease, SEIR model mainly and tried to implement using neural networks and deep learning. This was not completed due to the time constraints and inexpertise on the theories.</li>
+</ul>
 
-	<sup><a href = "https://ieeexplore.ieee.org/document/9298045">5</a></sup>
+<h3>Results</h3>
+<ul>
+	<li><h4>Using ARIMA to forecast for the following 15 days</h4>
 
-	Using ARIMA to forecast for the following 15 days<br>
 
 	<ul>
 		<li>From the data we have collected from <i>covid19india</i> and following what has been done in one of our reference <i>Short-term forecasting of the Covid-19 outbreak in India</i>, we have been able to generate a prediction for the following 15 days.
@@ -109,30 +74,187 @@ Later:<br>
 	<center>
 	<b>Predicted vs Actual data for last 10 days</b>
 	<figure>
+		
 		<img src="images/MH.png" alt="Maharastra"/>
-		<figcaption> Maharastra </figcaption>
-	</figure>
-	<figure>
 		<img src="images/KL.png" alt="Kerala"/>
-		<figcaption> Kerala </figcaption>
-	</figure>
-	<figure>
 		<img src="images/ODH.png" alt="Odisha"/>
-		<figcaption> Odisha </figcaption>
+		<figcaption>Fig: (i) Maharastra (R-sq : 0.2281; MSE : 6453065.06) (ii) Kerala (R-sq : 0.0538; MSE : 128921666.67) (iii) Odisha(R-sq : -0.98; MSE : 72690.91)</figcaption>
+		
 	</figure>
 	</center>
+	
+		<ul>
+			<li>This model cannot deliver accurate results and thus can’t conclude with any justifiable implications. We can see that the model correctly shows the uptrend or downtrend in some cases but in multiple other cases we get negative R-scores. So we cannot fully rely on this model.</li>
+		</ul><br>
 
-All our codes are available <a href="https://drive.google.com/drive/folders/1WIVs1h6xaqXspHDLv2lOPzbvJiUc34nv?usp=sharing">here</a>.<br><br>
+	<a href="pages/arima.html">Codes on ARIMA</a><br>
+	<a href="https://drive.google.com/drive/folders/1SDHin51kideJY44Y7CsGR1UK2I0bBbFZ?usp=sharing">Experiments on Arima.</a>
+
+	</li><br>
+
+	<li>
+				<h4>Forecasting using VARMAX</h4>
+
+				
+
+				<ul>
+					<li>Endogenous variables: Active cases, recovered, deceased.</li>
+					<li>Exogenous variable: Active tested.		
 
 
-The results we have got till now is close but room for improvement is clearly visible. We will continue to approve on the model by considering factors that have not been taken into account till now. We have yet to find the correlation on the spreading rates of two different states.
+				<ul>
+					<br><li><h5>Without vaccination data</h5><br>
+			<center>
+			<figure>
+				
+				<img src="images/1a.png" alt="Kerala" width="370" height="290"/>
+				<img src="images/1b.png" alt="Kerala" width="370" height="290"/>
 
-<br>
-<br>
+				<figcaption>Fig: Forecasting for Kerala</figcaption>
+				
+			</figure>
+			<figure>
+				
+				<img src="images/1c.png" alt="Kerala" width="700" height="550"/>
+	
+				
+			</figure>
+			</center>
+			</li>
+
+			<br><li>
+				<h5>With vaccination data</h5><br>
+			<center>
+			<figure>
+				
+				<img src="images/2a.png" alt="Kerala"  width="370" height="250"/>
+				<img src="images/2b.png" alt="Kerala"  width="370" height="250"/>
+
+				<figcaption>Fig: Forecasting for Kerala</figcaption>
+				
+			</figure>
+			<figure>
+				
+				<img src="images/2c.png" alt="Kerala" width="700" height="550"/>
+			
+			</figure>
+			</center>
+			</li>
+				</ul>
+
+			</li>
+				</ul><br><br>
+
+	<a href="pages/varmax.html">Codes on VARMAX</a><br>
+	<a href="https://drive.google.com/drive/folders/1dr8Ia3zI4vnBfOMI_FzfYz2xWVBLW549?usp=sharing">Experiments on VARMAX.</a>
+
+
+	</li><br><br>
+
+	<li>
+		<h4>Using random forest for forecasting</h4>
+
+		<ul>
+			<li>Random forest regression from sklearn library is used to obtain a forcast on Odisha active cases data</li>
+			<li>For different testing sets, model score differs but huge extends and sometime also gives a negative score.</li>
+		</ul><br>
+
+		<center>
+		<figure>
+				
+				<img src="images/3.png" alt="Odisha" width="400" height="300"/>
+				<figcaption>Fig: Actual and predicted active cases in Odisha </figcaption>
+				
+			</figure>
+			</center>
+
+		<ul>
+			<li>The model fails to achieve desired results and thus can’t conclude with any justifiable implications, even in most cases it correctly shows the uptrend or downtrend but in multiple cases gives conflicting results with the actual data.</li>
+		</ul>
+
+	</li><br>
+
+	<li>
+		<h4>Implementing Random forest model to find correlation in states
+</h4>
+
+		<ul>
+			<li>We tried to predict the cases for Odisha by accounting the historical data for Kerala.</li>
+			<li>Surprisingly it give very good results with model scores greater than 0.9 for different testing sets.</li>
+		</ul><br>
+
+		<center>
+		<figure>
+				
+				<img src="images/4a.png" alt="Odisha" width="400" height="300"/>
+				<img src="images/4b.png" alt="Odisha" width="400" height="300"/>
+				<figcaption>Fig: Actual and predicted active cases in Odisha considering Kerala’s data (ii) ACTIVE corresponds to Kerala's active cases</figcaption>
+				
+			</figure>
+			</center>
+
+
+
+		<ul>
+			<li>Discarding the forecasting using random forest, with the data forecast from VARMAX we can run this model and apply this model get a prediction for other states.</li>
+			<li>Instead of only considering one hotspot state we can consider multiple hotspot states and from it we expect more fine tuned results.</li>
+		</ul><br>
+
+		<h5>After accounting vaccination data for Odisha</h5>
+
+		<ul>
+			<li>Model scores is still good with above 0.9 values.</li>
+
+		</ul><br>
+
+		<center>
+		<figure>
+				
+				<img src="images/5.png" alt="Odisha" width="400" height="300"/>
+
+				<figcaption>Fig: Actual and predicted active cases in Odisha considering Kerala’s data and vaccination data in Odisha</figcaption>
+				
+			</figure>
+			</center>
+
+		<ul>
+			<li>Cannot conclude that considering Odisha’s vaccination data gives better results to the one prior without it because with some testing datasets the prior  model gives higher score, even though there is very small differences.</li>
+		</ul><br>
+
+
+	<a href="pages/RF.html">Codes on Random forest</a><br>
+	<a href="https://drive.google.com/drive/folders/1nloyJTcV-BMCxbK0h88jtvFCmY2E30d4?usp=sharing">Experiments on Random forest.</a>
+	</li>
+
+	<br><li>
+
 
 
 <h5>Integrating COVID-19 compartmental models and DL models (idea proposal and review):</h5><br>
-<p><iframe src="https://drive.google.com/file/d/1-1bBrBbyTUBtFwKp_aClxDlBgK97W7H7/preview" width="940" height="480" allow="autoplay"></iframe></p>
+
+We did a theoretical study of compartmental models of infectious disease, SEIR model mainly and tried to implement using neural networks and deep learning. We were not able to complete this part in our project due to the time constraints and having only very introductory level on the theories of the subject.<br>
+<br>
+A report on our study of the compartmental model and the idea of implementing DL is attached.<br><br>
+
+
+<center>
+<a class="btn btn-primary" href="pages/ac268a68-4566-11ec-a980-0cc47a792c0a_id_ac268a68-4566-11ec-a980-0cc47a792c0a.html" role="button">Report on compartmental models</a>
+</center><br>
+
+
+<a href="https://drive.google.com/drive/folders/1IZCxkcSe29-NHGZenYWwucQmeVvgSkfm?usp=sharing">Experiments on LSTM.</a>
+
+</li><br>
+
+
+
+<h3>Conclusion</h3>
+
+In our project we tried to get a forecast of covid cases timeline for states in India and for that we used ARIMA, VARMAX and Random Forest models. Out of the models the VARMAX model gives the best results. Then we tried to get an idea of correlation between states cases timelines and predicted the timeline of a state by considering the historical data available of a hotspot state. This is done using Random Forest and we get suprisingly good results with our model giving scores above 0.9.
+
+
+
+</ul>
 
 <br>
 
@@ -148,6 +270,10 @@ The results we have got till now is close but room for improvement is clearly vi
 	<li><sup>4</sup> [Nature] Yazeed Zoabi, Shira Deri-Rozov  & Noam Shomron, 2021, <i>Machine learning-based prediction of COVID-19 diagnosis based on symptoms</i>. - <a href="https://www.nature.com/articles/s41746-020-00372-6">Link</a></li>
 	<li><sup>5</sup>[Narayana Darapaneni, Deepak Reddy, Anwesh Reddy Paduri, Pooja Acharya, H S Nithin] Forecasting of COVID-19 in India Using ARIMA Model. - <a href="https://ieeexplore.ieee.org/document/9298045">Link</a></li>
 </ul>
+
+
+
+
 
 </div>
 </body>
